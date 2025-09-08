@@ -154,7 +154,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/picture-of-a-wooden-building-in-the-forest.webp")}
                                         />
                                         <i
@@ -192,7 +192,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/pexels-stan-krotov-12737424 1.webp")}
                                         />
                                         <i
@@ -232,7 +232,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/pexels-rachel-claire-8112843 1.webp")}
                                         />
                                         <i
@@ -272,7 +272,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/david-kovalenko-9-qFzV9a2Zc-unsplash.webp")}
                                         />
                                         <i
@@ -310,7 +310,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/house_big-1.webp")}
                                         />
                                         <i
@@ -350,7 +350,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/house_big.webp")}
                                         />
                                         <i
@@ -390,7 +390,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/picture-of-a-wooden-building-in-the-forest.webp")}
                                         />
                                         <i
@@ -428,7 +428,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/pexels-stan-krotov-12737424 1.webp")}
                                         />
                                         <i
@@ -468,7 +468,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/pexels-rachel-claire-8112843 1.webp")}
                                         />
                                         <i
@@ -508,7 +508,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/david-kovalenko-9-qFzV9a2Zc-unsplash.webp")}
                                         />
                                         <i
@@ -546,7 +546,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/house_big-1.webp")}
                                         />
                                         <i
@@ -586,7 +586,7 @@ function Properties() {
                                     <div className="rounded overflow-hidden position-relative">
                                         <Card.Img
                                             variant="top"
-                                            alt="img"
+                                            alt="Mark as favorite"
                                             src={require("../images/properties/house_big.webp")}
                                         />
                                         <i

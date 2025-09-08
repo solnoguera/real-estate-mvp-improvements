@@ -58,7 +58,7 @@ function Loading() {
                                 <div className="rounded overflow-hidden position-relative">
                                     <Card.Img
                                         variant="top"
-                                        alt="img"
+                                        alt="Mark as favorite"
                                         src={require("../images/properties/house_big-1.webp")}
                                     />
                                     <i
@@ -93,7 +93,7 @@ function Loading() {
                                 <div className="rounded overflow-hidden position-relative">
                                     <Card.Img
                                         variant="top"
-                                        alt="img"
+                                        alt="Mark as favorite"
                                         src={require("../images/properties/house_big.webp")}
                                     />
                                     <i
