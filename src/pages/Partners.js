@@ -39,22 +39,22 @@ function Partners() {
           }}
         >
           <SwiperSlide>
-            <img src={require("../images/partners/stellar.png")} alt="img" />
+            <img src={require("../images/partners/stellar.png")} alt="Stellar logo" loading="lazy" decoding="async" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={require("../images/partners/blockport.png")} alt="img" />
+            <img src={require("../images/partners/blockport.png")} alt="Blockport logo" loading="lazy" decoding="async" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={require("../images/partners/fantom.png")} alt="img" />
+            <img src={require("../images/partners/fantom.png")} alt="Fantom logo" loading="lazy" decoding="async" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={require("../images/partners/onfido.png")} alt="img" />
+            <img src={require("../images/partners/onfido.png")} alt="Onfido logo" loading="lazy" decoding="async" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={require("../images/partners/tr.png")} alt="img" />
+            <img src={require("../images/partners/tr.png")} alt="TR logo" loading="lazy" decoding="async" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={require("../images/partners/qa.png")} alt="img" />
+            <img src={require("../images/partners/qa.png")} alt="QA logo" loading="lazy" decoding="async" />
           </SwiperSlide>
         </Swiper>
       </Container>

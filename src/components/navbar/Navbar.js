@@ -11,7 +11,7 @@ function NavBar() {
     <Navbar expand="lg" className="py-3">
       <Container>
         <Navbar.Brand href="#" className="me-lg-5">
-          <img className="logo" src={logo} alt="logo" />
+          <img className="logo" src={logo} alt="Real Estate logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

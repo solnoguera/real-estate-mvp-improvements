@@ -33,14 +33,18 @@ function AboutUs() {
               <img
                 src={require("..//images/bohdan-d-fh6o-XkVQG8-unsplash.webp")}
                 className="p-0 me-2 img"
-                alt="img"
+                alt="Wooden cabin in forest at dusk"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div>
               <img
                 src={require("..//images/john-o-nolan-6f_ANCcbj3o-unsplash.webp")}
                 className="p-0 img"
-                alt="img"
+                alt="Modern living room interior"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -49,14 +53,18 @@ function AboutUs() {
               <img
                 src={require("..//images/julia-solonina-ci19YINguoc-unsplash.webp")}
                 className="p-0 me-2 img"
-                alt="img"
+                alt="Cozy bedroom with natural light"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div>
               <img
                 src={require("..//images/theater-amazonas-manaus.webp")}
                 className="p-0 img"
-                alt="img"
+                alt="Teatro Amazonas in Manaus, Brazil"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
