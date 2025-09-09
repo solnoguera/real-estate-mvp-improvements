@@ -30,7 +30,7 @@ const NavBar = () => {
     <Navbar expand="lg" sticky="top" className="py-3 bg-black-100">
       <Container>
         <Navbar.Brand href="#" onClick={() => navigate("/")} className="me-lg-5">
-          <img className="logo" src={logo} alt="Real Estate logo" />
+          <img className="logo ms-4" src={logo} alt="Real Estate logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -77,7 +77,7 @@ const NavBar = () => {
             }}
           />
           {userAddress && balanceBNB && balanceUSDT && (
-            <div className="d-flex align-items-center text-white ms-5">
+            <div className="d-none d-lg-flex align-items-center text-white ms-5">
               <span className="me-2">{Number(balanceBNB).toFixed(2)} BNB</span>
               <span>{Number(balanceUSDT).toFixed(2)} USDT</span>
             </div>
