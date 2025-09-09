@@ -1,12 +1,7 @@
 import { ethers } from "ethers";
 
-const useWeb3 = () => {
-
-    const userAddress = localStorage.getItem("userAddress");
-    const balanceBNB = localStorage.getItem("balanceBNB");
-    const balanceUSDT = localStorage.getItem("balanceUSDT");
-    // Multiples RPCs for BSC Testnet (fallbacks)
-    const BSC_TESTNET_RPCS = [
+// Multiples RPCs for BSC Testnet (fallbacks)
+const BSC_TESTNET_RPCS = [
     "https://data-seed-prebsc-1-s1.binance.org:8545/",
     "https://data-seed-prebsc-2-s1.binance.org:8545/",
     "https://data-seed-prebsc-1-s2.binance.org:8545/",
@@ -14,40 +9,47 @@ const useWeb3 = () => {
     "https://data-seed-prebsc-1-s3.binance.org:8545/",
     "https://bsc-testnet.public.blastapi.io",
     "https://bsc-testnet-rpc.publicnode.com"
-    ];
-    // Multiples RPCs for BSC Mainnet (fallbacks)
-    const BSC_MAINNET_RPCS = [
+];
+// Multiples RPCs for BSC Mainnet (fallbacks)
+const BSC_MAINNET_RPCS = [
     "https://bsc-dataseed.binance.org/",
     "https://bsc-dataseed1.defibit.io/",
     "https://bsc-dataseed1.ninicoin.io/",
     "https://bsc-dataseed2.defibit.io/",
     "https://bsc-dataseed3.defibit.io/",
     "https://bsc-dataseed4.defibit.io/"
-    ];
+];
 
-    const TEST_NETWORK_CONFIG = {
-        chain_id: "0x61",
-        error_msg: "Please select Binance Testnet",
-        rpcs: BSC_TESTNET_RPCS
-    };
+const TEST_NETWORK_CONFIG = {
+    chain_id: "0x61",
+    error_msg: "Please select Binance Testnet",
+    rpcs: BSC_TESTNET_RPCS
+};
 
-    const MAIN_NETWORK_CONFIG = {
-        chain_id: "0x38",
-        error_msg: "Please select Binance Mainnet",
-        rpcs: BSC_MAINNET_RPCS
-    };
+const MAIN_NETWORK_CONFIG = {
+    chain_id: "0x38",
+    error_msg: "Please select Binance Mainnet",
+    rpcs: BSC_MAINNET_RPCS
+};
 
-    const NETWORK_CONFIG = process.env.NODE_ENV === "production" ? MAIN_NETWORK_CONFIG : TEST_NETWORK_CONFIG;
+const NETWORK_CONFIG = process.env.NODE_ENV === "production" ? MAIN_NETWORK_CONFIG : TEST_NETWORK_CONFIG;
+console.log("process.env.NODE_ENV",process.env.NODE_ENV)
+const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955"; // USDT in BSC Mainnet
+const USDT_TESTNET = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd"; // USDT in BSC Testnet
+const USDT_ABI = [
+    "function balanceOf(address owner) external view returns (uint256)",
+    "function approve(address spender, uint256 amount) external returns (bool)",
+    "function allowance(address owner, address spender) external view returns (uint256)",
+    "function decimals() external view returns (uint8)",
+    "function transfer(address to, uint256 amount) external returns (bool)"
+];
 
-    const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955"; // USDT in BSC Mainnet
-    const USDT_TESTNET = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd"; // USDT in BSC Testnet
-    const USDT_ABI = [
-        "function balanceOf(address owner) external view returns (uint256)",
-        "function approve(address spender, uint256 amount) external returns (bool)",
-        "function allowance(address owner, address spender) external view returns (uint256)",
-        "function decimals() external view returns (uint8)",
-        "function transfer(address to, uint256 amount) external returns (bool)"
-    ];
+const useWeb3 = () => {
+
+    const userAddress = localStorage.getItem("userAddress");
+    const balanceBNB = localStorage.getItem("balanceBNB");
+    const balanceUSDT = localStorage.getItem("balanceUSDT");
+
 
     const approveNetwork = async () => {
         return new Promise(async (resolve) => {
