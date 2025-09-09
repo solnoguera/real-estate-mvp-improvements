@@ -15,12 +15,14 @@ const NavBar = () => {
           handleConnectWallet,
           userAddress,
           balanceBNB,
-          balanceUSDT
+          balanceUSDT,
+          isConnecting
                       } = useWeb3();
   
   const navigate = useNavigate();
 
   const [activePage, setActivePage] = useState("home");
+  const connectText = isConnecting ? "Connecting..." : "Connect Wallet";
 
   return (
     <Navbar expand="lg" sticky="top" className="py-3 bg-black-100">
@@ -91,7 +93,7 @@ const NavBar = () => {
               className="btn-primary d-none d-lg-inline-block"
               onClick={userAddress ? handleDisconnectWallet : handleConnectWallet}
             >
-              {userAddress ? `Disconnect from ${userAddress.slice(0, 6)}...${userAddress.slice(-4)}` : "Connect Wallet"}
+              {userAddress ? `Disconnect from ${userAddress.slice(0, 6)}...${userAddress.slice(-4)}` : connectText}
             </Button>
         </div>
       </Container>

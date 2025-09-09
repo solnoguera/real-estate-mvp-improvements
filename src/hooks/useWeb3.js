@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { useState } from "react";
 
 // Multiples RPCs for BSC Testnet (fallbacks)
 const BSC_TESTNET_RPCS = [
@@ -44,7 +45,7 @@ const USDT_ABI = [
 ];
 
 const useWeb3 = () => {
-
+    const [isConnecting, setIsConnecting] = useState(false);
     const userAddress = localStorage.getItem("userAddress");
     const balanceBNB = localStorage.getItem("balanceBNB");
     const balanceUSDT = localStorage.getItem("balanceUSDT");
@@ -163,6 +164,7 @@ const useWeb3 = () => {
         }
 
         try {
+            setIsConnecting(true);
             await approveNetwork();
             const provider = new ethers.BrowserProvider(window.ethereum);
             const accounts = await provider.send("eth_requestAccounts", []);
@@ -187,6 +189,8 @@ const useWeb3 = () => {
             alert(
                 `Error MetaMask: \n${errorMessage}`
             );
+        } finally {
+            setIsConnecting(false);
         }
     }
 
@@ -240,6 +244,7 @@ const useWeb3 = () => {
     };
 
   return {
+    isConnecting,
     userAddress,
     balanceBNB,
     balanceUSDT,
