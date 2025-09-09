@@ -15,7 +15,6 @@
   color: #a8a8a8;
 }
 
-/* Mantener los enlaces activos en blanco, incluso al hacer hover o al estar presionados */
 .nav-link.active,
 .nav-link.active:hover,
 .nav-link:active {
