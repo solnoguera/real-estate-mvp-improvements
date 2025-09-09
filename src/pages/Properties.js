@@ -17,7 +17,8 @@ import Property from "../components/Property";
 const Properties = () => {
 
     const tabs = ["All", "Cottage", "Chalet", "Manor", "Penthouse", "Farmhouse", "Duplex"];
-    const [activeTab, setActiveTab] = useState(tabs[0]);
+    const ALL = tabs[0];
+    const [activeTab, setActiveTab] = useState(ALL);
 
     const properties = [
         {
@@ -112,7 +113,7 @@ const Properties = () => {
         },
     ]
 
-    const propertiesToShow = activeTab === tabs[0] ? properties : properties.filter((property) => property.type === activeTab);
+    const propertiesToShow = activeTab === ALL ? properties : properties.filter((property) => property.type === activeTab);
 
     return (
         // Start properties
