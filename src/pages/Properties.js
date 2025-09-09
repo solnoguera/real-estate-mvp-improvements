@@ -106,7 +106,7 @@ const Properties = () => {
 
     return (
         // Start properties
-        <div className="properties">
+        <div className="properties" id="marketplace">
             <Container>
                 <AnimationTitles
                     className="title mx-auto"

@@ -2,9 +2,9 @@ import { Button, Container } from "react-bootstrap";
 import { motion } from "framer-motion";
 import AnimationTitles from "../components/functions/AnimationTitles";
 
-function AboutUs() {
+const AboutUs = () => {
   return (
-    <div className="about">
+    <div className="about" id="about-us">
       <Container className="d-flex justify-content-between flex-wrap flex-md-nowrap">
         <motion.div
           initial={{ x: -200 }}

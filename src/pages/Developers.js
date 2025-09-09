@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import AnimationTitles from "../components/functions/AnimationTitles";
 import { motion } from "framer-motion";
 
-function Developers() {
+const Developers = () => {
     return (
-        <div className="developers">
+        <div className="developers" id="developers">
             <div className="container-fluid">
                 <AnimationTitles
                     title="Our the best developers"
