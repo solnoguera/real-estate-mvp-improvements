@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 // Import bootstrap react components
 import { Button, Container } from "react-bootstrap";
 // Import Swiper React components
@@ -13,16 +14,14 @@ import { motion } from "framer-motion";
 import AnimationTitles from "../components/functions/AnimationTitles";
 import Property from "../components/Property";
 
-function Properties() {
-    // Active on select a tab
-    function active(e) {
-        let act = document.querySelectorAll(".active");
-        act[0].classList.remove("active");
-        e.target.classList.add("active");
-    }
+const Properties = () => {
+
+    const tabs = ["All", "Cottage", "Chalet", "Manor", "Penthouse", "Farmhouse", "Duplex"];
+    const [activeTab, setActiveTab] = useState(tabs[0]);
 
     const properties = [
         {
+            type: "Cottage",
             image: require("../images/properties/picture-of-a-wooden-building-in-the-forest.webp"),
             title: "Cottage «Forrest 1»",
             description: "@Red Oak Realty",
@@ -30,6 +29,7 @@ function Properties() {
             currentBid: 29.71
         },
         {
+            type: "Chalet",
             image: require("../images/properties/pexels-stan-krotov-12737424 1.webp"),
             title: "Freshness",
             description: "@US California Real Estate",
@@ -37,6 +37,7 @@ function Properties() {
             currentBid: 14.81
         },
         {
+            type: "Manor",
             image: require("../images/properties/pexels-rachel-claire-8112843 1.webp"),
             title: "Wish house",
             description: "@Norway estate agency",
@@ -44,6 +45,7 @@ function Properties() {
             currentBid: 16.62
         },
         {
+            type: "Penthouse",
             image: require("../images/properties/david-kovalenko-9-qFzV9a2Zc-unsplash.webp"),
             title: "Spruce",
             description: "@Dream House",
@@ -51,6 +53,7 @@ function Properties() {
             currentBid: 17.01
         },
         {
+            type: "Farmhouse",
             image: require("../images/properties/house_big-1.webp"),
             title: "Residence Rybna",
             description: "@Ukraine estate agency",
@@ -58,6 +61,7 @@ function Properties() {
             currentBid: 29.71
         },
         {
+            type: "Duplex",
             image: require("../images/properties/house_big.webp"),
             title: "Blue Sky",
             description: "@US New York Real Estate",
@@ -65,6 +69,7 @@ function Properties() {
             currentBid: 17.31
         },
         {
+            type: "Chalet",
             image: require("../images/properties/pexels-stan-krotov-12737424 1.webp"),
             title: "Freshness",
             description: "@US Los Angeles Real Estate",
@@ -72,6 +77,7 @@ function Properties() {
             currentBid: 14.81
         },
         {
+            type: "Farmhouse",
             image: require("../images/properties/house_big.webp"),
             title: "Blue Sky",
             description: "@Brazil Real Estate",
@@ -79,6 +85,7 @@ function Properties() {
             currentBid: 17.31
         },
         {
+            type: "Duplex",
             image: require("../images/properties/pexels-rachel-claire-8112843 1.webp"),
             title: "Wish house",
             description: "@Portugal estate agency",
@@ -86,6 +93,7 @@ function Properties() {
             currentBid: 16.62
         },
         {
+            type: "Cottage",
             image: require("../images/properties/house_big-1.webp"),
             title: "Residence Rybna",
             description: "@France estate agency",
@@ -93,6 +101,9 @@ function Properties() {
             currentBid: 29.71
         },
     ]
+
+    const propertiesToShow = activeTab === tabs[0] ? properties : properties.filter((property) => property.type === activeTab);
+
     return (
         // Start properties
         <div className="properties">
@@ -117,62 +128,16 @@ function Properties() {
                             },
                         }}
                     >
-                        <SwiperSlide>
-                            <Button
-                                className="ms-0 bg-black-100 border-0"
-                                onClick={active}
-                            >
-                                All
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className="ms-0 bg-black-100 border-0 active"
-                                onClick={active}
-                            >
-                                Cottage
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className="ms-0 bg-black-100 border-0"
-                                onClick={active}
-                            >
-                                Chalet
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className="ms-0 bg-black-100 border-0"
-                                onClick={active}
-                            >
-                                Manor
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className="ms-0 bg-black-100 border-0"
-                                onClick={active}
-                            >
-                                Penthouse
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className="ms-0 bg-black-100 border-0"
-                                onClick={active}
-                            >
-                                Farmhouse
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className="ms-0 bg-black-100 border-0"
-                                onClick={active}
-                            >
-                                Duplex
-                            </Button>
-                        </SwiperSlide>
+                        {tabs.map((tab, index) => (
+                            <SwiperSlide key={index}>
+                                <Button
+                                    className={`ms-0 bg-black-100 border-0 ${activeTab === tab ? "active" : ""}`}
+                                    onClick={() => setActiveTab(tab)}
+                                >
+                                    {tab}
+                                </Button>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                 </div>
                 {/* End tabs */}
@@ -212,7 +177,7 @@ function Properties() {
                         modules={[Pagination, Navigation]}
                         className="mySwiper mt-4"
                     >
-                        {properties.map((property, index) => (
+                        {propertiesToShow.map((property, index) => (
                             <SwiperSlide key={index}>
                                 <Property {...property} />
                             </SwiperSlide>
@@ -222,7 +187,6 @@ function Properties() {
                 {/* End cards */}
             </Container>
         </div>
-        // End properties
     );
 }
 
