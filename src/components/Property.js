@@ -2,8 +2,30 @@ import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import CountDown from './functions/CountDown';
 
-const Property = ({ image, title, description, countDown, currentBid, currency = 'ETH' }) => {
-    const [liked, setLiked] = useState(false);
+const Property = ({ id, image, title, description, countDown, currentBid, currency = 'ETH', hideLikedButton = false }) => {
+    
+    const likedProperties = localStorage.getItem('likedProperties');
+    const likedPropertiesArray = JSON.parse(likedProperties) || [];
+    const isLiked = likedPropertiesArray.some((property) => property.id === id);
+    
+    const [liked, setLiked] = useState(isLiked);
+
+    const onLiked = () => {
+        const newState = !liked;
+        setLiked(newState);
+        const propertyToAddOrRemove = { id, image, title, description, countDown, currentBid, currency };
+        const likedProperties = localStorage.getItem('likedProperties');
+        const likedPropertiesArray = JSON.parse(likedProperties) || [];
+
+        // If liked
+        if (newState) {
+            likedPropertiesArray.push(propertyToAddOrRemove);
+            localStorage.setItem('likedProperties', JSON.stringify(likedPropertiesArray));
+        } else {
+            const filteredLikedPropertiesArray = likedPropertiesArray.filter((property) => property.id !== propertyToAddOrRemove.id);
+            localStorage.setItem('likedProperties', JSON.stringify(filteredLikedPropertiesArray));
+        }
+    }
 
     return (
         <Card className="bg-black-100 rounded">
@@ -14,10 +36,12 @@ const Property = ({ image, title, description, countDown, currentBid, currency =
                         alt="Mark as favorite"
                         src={image}
                     />
-                    <i
+                    {!hideLikedButton && (
+                        <i
                         className={liked ? "fa-solid fa-heart like text-danger" : "fa-regular fa-heart like"}
-                        onClick={() => setLiked(!liked)}
-                    ></i>
+                            onClick={onLiked}
+                        ></i>
+                    )}
                 </div>
                 <h5 className="mt-2 text-white fw-normal">
                     {title}

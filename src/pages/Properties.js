@@ -21,6 +21,7 @@ const Properties = () => {
 
     const properties = [
         {
+            id: 1,
             type: "Cottage",
             image: require("../images/properties/picture-of-a-wooden-building-in-the-forest.webp"),
             title: "Cottage «Forrest 1»",
@@ -29,6 +30,7 @@ const Properties = () => {
             currentBid: 29.71
         },
         {
+            id: 2,
             type: "Chalet",
             image: require("../images/properties/pexels-stan-krotov-12737424 1.webp"),
             title: "Freshness",
@@ -37,6 +39,7 @@ const Properties = () => {
             currentBid: 14.81
         },
         {
+            id: 3,
             type: "Manor",
             image: require("../images/properties/pexels-rachel-claire-8112843 1.webp"),
             title: "Wish house",
@@ -45,6 +48,7 @@ const Properties = () => {
             currentBid: 16.62
         },
         {
+            id: 4,
             type: "Penthouse",
             image: require("../images/properties/david-kovalenko-9-qFzV9a2Zc-unsplash.webp"),
             title: "Spruce",
@@ -53,6 +57,7 @@ const Properties = () => {
             currentBid: 17.01
         },
         {
+            id: 5,
             type: "Farmhouse",
             image: require("../images/properties/house_big-1.webp"),
             title: "Residence Rybna",
@@ -61,6 +66,7 @@ const Properties = () => {
             currentBid: 29.71
         },
         {
+            id: 6,
             type: "Duplex",
             image: require("../images/properties/house_big.webp"),
             title: "Blue Sky",
@@ -69,6 +75,7 @@ const Properties = () => {
             currentBid: 17.31
         },
         {
+            id: 7,
             type: "Chalet",
             image: require("../images/properties/pexels-stan-krotov-12737424 1.webp"),
             title: "Freshness",
@@ -77,6 +84,7 @@ const Properties = () => {
             currentBid: 14.81
         },
         {
+            id: 8,
             type: "Farmhouse",
             image: require("../images/properties/house_big.webp"),
             title: "Blue Sky",
@@ -85,6 +93,7 @@ const Properties = () => {
             currentBid: 17.31
         },
         {
+            id: 9,
             type: "Duplex",
             image: require("../images/properties/pexels-rachel-claire-8112843 1.webp"),
             title: "Wish house",
@@ -93,6 +102,7 @@ const Properties = () => {
             currentBid: 16.62
         },
         {
+            id: 10,
             type: "Cottage",
             image: require("../images/properties/house_big-1.webp"),
             title: "Residence Rybna",
