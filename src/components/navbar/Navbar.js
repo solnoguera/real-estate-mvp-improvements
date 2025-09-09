@@ -3,14 +3,18 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../../images/logo/logo.png";
 import { Button } from "react-bootstrap";
-import { handleConnectWallet, handleDisconnectWallet } from "../../utils/web3";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
+import useWeb3 from "../../hooks/useWeb3";
 
 const NavBar = () => {
-  const userAddress = localStorage.getItem("userAddress");
-  const balanceBNB = localStorage.getItem("balanceBNB");
-  const balanceUSDT = localStorage.getItem("balanceUSDT");
+  const { 
+          handleDisconnectWallet, 
+          handleConnectWallet,
+          userAddress,
+          balanceBNB,
+          balanceUSDT
+         } = useWeb3();
   return (
     <Navbar expand="lg" sticky="top" className="py-3 bg-black-100">
       <Container>
