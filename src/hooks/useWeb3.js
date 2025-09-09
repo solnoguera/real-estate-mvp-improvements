@@ -33,7 +33,6 @@ const MAIN_NETWORK_CONFIG = {
 };
 
 const NETWORK_CONFIG = process.env.NODE_ENV === "production" ? MAIN_NETWORK_CONFIG : TEST_NETWORK_CONFIG;
-console.log("process.env.NODE_ENV",process.env.NODE_ENV)
 const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955"; // USDT in BSC Mainnet
 const USDT_TESTNET = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd"; // USDT in BSC Testnet
 const USDT_ABI = [
