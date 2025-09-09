@@ -1,31 +1,50 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-function CountDown({ h, m, s }) {
-  const [hours, setHour] = useState(h);
-  const [menotes, setMenotes] = useState(m);
-  const [seconds, setSeconds] = useState(s);
+function CountDown({ h = 0, m = 0, s = 0, onComplete = undefined }) {
+  const [totalSeconds, setTotalSeconds] = useState(h * 3600 + m * 60 + s);
+  const intervalRef = useRef(null);
 
-  const timer = setTimeout(() => {
-    setSeconds(seconds - 1);
-    if (seconds === 0) {
-      setMenotes(menotes - 1);
-      setSeconds(59);
+  const handleClearInterval = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-    if (menotes === 0 && seconds === 0) {
-      setHour(hours - 1);
-      setMenotes(59);
-    }
-  }, 1000);
-
-  if (hours === 0 && menotes === 0 && seconds === 0) {
-    clearTimeout(timer);
   }
+
+  // Reset the counter if the props change
+  useEffect(() => {
+    setTotalSeconds(h * 3600 + m * 60 + s);
+  }, [h, m, s]);
+
+  // Handles the interval and its cleanup
+  useEffect(() => {
+    if (totalSeconds <= 0 && typeof onComplete === 'function') {
+      onComplete();
+      return;
+    }
+
+    intervalRef.current = setInterval(() => {
+      setTotalSeconds((prev) => {
+        if (prev <= 1) {
+          handleClearInterval();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => handleClearInterval();
+  }, [onComplete]);
+
+  const hours = Math.floor(totalSeconds / (60 * 60));
+  const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+  const seconds = totalSeconds % 60;
+
+  const pad = (value) => (value < 10 ? `0${value}` : String(value));
 
   return (
     <h6 className="text-white">
-      {hours < 10 ? "0" + hours : hours}h :{" "}
-      {menotes < 10 ? "0" + menotes : menotes}m :{" "}
-      {seconds < 10 ? "0" + seconds : seconds}s
+      {pad(hours)}h : {pad(minutes)}m : {pad(seconds)}s
     </h6>
   );
 }

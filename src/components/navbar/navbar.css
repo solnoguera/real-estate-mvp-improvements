@@ -15,6 +15,12 @@
   color: #a8a8a8;
 }
 
+.nav-link.active,
+.nav-link.active:hover,
+.nav-link:active {
+  color: #0D6EFD !important; /* Same as the current Button color */
+}
+
 .navbar-toggler:focus {
   box-shadow: none;
 }
@@ -98,4 +104,21 @@
   .order {
     order: -1;
   }
+}
+
+/* Navbar height to compensate for anchors and sticky positioning */
+:root {
+  --navbar-height: 72px;
+}
+
+/* Global scroll offset for anchor links */
+html {
+  scroll-padding-top: var(--navbar-height);
+}
+
+/* Ensure destination sections are not hidden under the navbar */
+#marketplace,
+#about-us,
+#developers {
+  scroll-margin-top: var(--navbar-height);
 }

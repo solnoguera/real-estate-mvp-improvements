@@ -5,33 +5,96 @@ import logo from "../../images/logo/logo.png";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
+import useWeb3 from "../../hooks/useWeb3";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function NavBar() {
+const NavBar = () => {
+  const { 
+          handleDisconnectWallet, 
+          handleConnectWallet,
+          userAddress,
+          balanceBNB,
+          balanceUSDT,
+          isConnecting
+                      } = useWeb3();
+  
+  const navigate = useNavigate();
+
+  const [activePage, setActivePage] = useState("home");
+  const connectText = isConnecting ? "Connecting..." : "Connect Wallet";
+
   return (
-    <Navbar expand="lg" className="py-3">
+    <Navbar expand="lg" sticky="top" className="py-3 bg-black-100">
       <Container>
-        <Navbar.Brand href="#" className="me-lg-5">
-          <img className="logo" src={logo} alt="logo" />
+        <Navbar.Brand 
+          href="#" 
+          onClick={() => { 
+            navigate("/")
+            setActivePage("home")
+          }} 
+          className="me-lg-5"
+          active={activePage === "home"}
+        >
+          <img className="logo ms-4" src={logo} alt="Real Estate logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link href="#action1">Marketplace</Nav.Link>
-            <Nav.Link href="#action2" className="px-lg-3">
+          <Nav className="me-auto my-2 my-lg-0" navbarScroll >
+            <Nav.Link 
+              href="#marketplace" 
+              active={activePage === "marketplace"} 
+              onClick={() => {
+                navigate("/")
+                setActivePage("marketplace")
+              }}
+            >
+              Marketplace
+            </Nav.Link>
+            <Nav.Link 
+              href="#about-us" 
+              active={activePage === "about"} 
+              className="px-lg-3"
+              onClick={() => {
+                navigate("/")
+                setActivePage("about")
+              }} >
               About Us
             </Nav.Link>
-            <Nav.Link href="#action3">Developers</Nav.Link>
+            <Nav.Link 
+              href="#developers" 
+              active={activePage === "developers"} 
+              onClick={() => {
+                navigate("/")
+                setActivePage("developers")
+              }}>
+                Developers
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <div className="d-flex align-items-center order">
           <span className="line d-lg-inline-block d-none"></span>
-          <i className="fa-regular fa-heart"></i>
-          <Button
-            variant="primary"
-            className="btn-primary d-none d-lg-inline-block"
-          >
-            Connect Wallet
-          </Button>
+          <i 
+            className={`fa-regular fa-heart ${activePage === "favorites" ? "text-primary" : ""}`} 
+            active={activePage === "favorites"} 
+            onClick={() => {
+              navigate("/favorites")
+              setActivePage("favorites")
+            }}
+          />
+          {userAddress && balanceBNB && balanceUSDT && (
+            <div className="d-none d-lg-flex align-items-center text-white ms-5">
+              <span className="me-2">{Number(balanceBNB).toFixed(2)} BNB</span>
+              <span>{Number(balanceUSDT).toFixed(2)} USDT</span>
+            </div>
+          )}
+            <Button
+              variant="primary"
+              className="btn-primary d-none d-lg-inline-block"
+              onClick={userAddress ? handleDisconnectWallet : handleConnectWallet}
+            >
+              {userAddress ? `Disconnect from ${userAddress.slice(0, 6)}...${userAddress.slice(-4)}` : connectText}
+            </Button>
         </div>
       </Container>
     </Navbar>

@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import AnimationTitles from "../components/functions/AnimationTitles";
 import { motion } from "framer-motion";
 
-function Developers() {
+const Developers = () => {
     return (
-        <div className="developers">
+        <div className="developers" id="developers">
             <div className="container-fluid">
                 <AnimationTitles
                     title="Our the best developers"
@@ -43,7 +43,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-01.png")}
-                                    alt="img"
+                                    alt="Norway House logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">Norway house</h6>
                             </div>
@@ -53,7 +55,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-02.png")}
-                                    alt="img"
+                                    alt="US California Real Estate logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     US California Real Estate
@@ -65,7 +69,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-03.png")}
-                                    alt="img"
+                                    alt="Happy Neighbor logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     Happy Neighbor
@@ -77,7 +83,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-04.png")}
-                                    alt="img"
+                                    alt="American Home Agents logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     American Home Agents
@@ -89,7 +97,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-05.png")}
-                                    alt="img"
+                                    alt="Ukr Home Agents logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     Ukr Home Agents
@@ -101,7 +111,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-06.png")}
-                                    alt="img"
+                                    alt="Norway Estate Agency logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     Norway estate agency
@@ -137,7 +149,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-07.png")}
-                                    alt="img"
+                                    alt="Red Oak Realty logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     Red Oak Realty
@@ -149,7 +163,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-08.png")}
-                                    alt="img"
+                                    alt="Dream House logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">Dream House</h6>
                             </div>
@@ -159,7 +175,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-09.png")}
-                                    alt="img"
+                                    alt="Leading Real Estate Companies logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     Leading Real Estate Companies
@@ -171,7 +189,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-10.png")}
-                                    alt="img"
+                                    alt="Home Partners of World logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     Home Partners of World
@@ -183,7 +203,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-11.png")}
-                                    alt="img"
+                                    alt="Red Oak Realty logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     Red Oak Realty
@@ -195,7 +217,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-13.png")}
-                                    alt="img"
+                                    alt="American Home Agents logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     American Home Agents
@@ -207,7 +231,9 @@ function Developers() {
                                 <img
                                     className="pe-3"
                                     src={require("../images/developers/logo-12.png")}
-                                    alt="img"
+                                    alt="Norway Estate Agency logo"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <h6 className="text-white m-0">
                                     Norway estate agency
