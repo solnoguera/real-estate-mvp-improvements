@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
 import useWeb3 from "../../hooks/useWeb3";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const NavBar = () => {
   const { 
@@ -22,14 +22,18 @@ const NavBar = () => {
 
   const [activePage, setActivePage] = useState("home");
 
-  useEffect(() => {
-    setActivePage(window.location.pathname);
-  }, [window.location.pathname]);
-
   return (
     <Navbar expand="lg" sticky="top" className="py-3 bg-black-100">
       <Container>
-        <Navbar.Brand href="#" onClick={() => navigate("/")} className="me-lg-5">
+        <Navbar.Brand 
+          href="#" 
+          onClick={() => { 
+            navigate("/")
+            setActivePage("home")
+          }} 
+          className="me-lg-5"
+          active={activePage === "home"}
+        >
           <img className="logo ms-4" src={logo} alt="Real Estate logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -37,10 +41,10 @@ const NavBar = () => {
           <Nav className="me-auto my-2 my-lg-0" navbarScroll >
             <Nav.Link 
               href="#marketplace" 
-              active={activePage === "home"} 
+              active={activePage === "marketplace"} 
               onClick={() => {
                 navigate("/")
-                setActivePage("home")
+                setActivePage("marketplace")
               }}
             >
               Marketplace
@@ -69,7 +73,7 @@ const NavBar = () => {
         <div className="d-flex align-items-center order">
           <span className="line d-lg-inline-block d-none"></span>
           <i 
-            className="fa-regular fa-heart" 
+            className={`fa-regular fa-heart ${activePage === "favorites" ? "text-primary" : ""}`} 
             active={activePage === "favorites"} 
             onClick={() => {
               navigate("/favorites")
