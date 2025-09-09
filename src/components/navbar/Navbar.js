@@ -1,13 +1,16 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { useState } from "react";
 import logo from "../../images/logo/logo.png";
 import { Button } from "react-bootstrap";
+import { handleConnectWallet, handleDisconnectWallet } from "../../utils/web3";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
 
 const NavBar = () => {
+  const userAddress = localStorage.getItem("userAddress");
+  const balanceBNB = localStorage.getItem("balanceBNB");
+  const balanceUSDT = localStorage.getItem("balanceUSDT");
   return (
     <Navbar expand="lg" sticky="top" className="py-3 bg-black-100">
       <Container>
@@ -27,12 +30,19 @@ const NavBar = () => {
         <div className="d-flex align-items-center order">
           <span className="line d-lg-inline-block d-none"></span>
           <i className="fa-regular fa-heart"></i>
-          <Button
-            variant="primary"
-            className="btn-primary d-none d-lg-inline-block"
-          >
-            Connect Wallet
-          </Button>
+          {userAddress && balanceBNB && balanceUSDT && (
+            <div className="d-flex align-items-center text-white ms-5">
+              <span className="me-2">{Number(balanceBNB).toFixed(2)} BNB</span>
+              <span>{Number(balanceUSDT).toFixed(2)} USDT</span>
+            </div>
+          )}
+            <Button
+              variant="primary"
+              className="btn-primary d-none d-lg-inline-block"
+              onClick={userAddress ? handleDisconnectWallet : handleConnectWallet}
+            >
+              {userAddress ? `Disconnect from ${userAddress.slice(0, 6)}...${userAddress.slice(-4)}` : "Connect Wallet"}
+            </Button>
         </div>
       </Container>
     </Navbar>
