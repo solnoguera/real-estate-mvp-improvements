@@ -53,43 +53,43 @@ const useWeb3 = () => {
         return new Promise(async (resolve) => {
             const chainId = NETWORK_CONFIG.chain_id;
             const networks = {
-            "0x61": {
-                chainName: "Binance Test Network",
-                rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
-                blockExplorerUrls: ["https://testnet.bscscan.com/"],
-            },
-            "0x38": {
-                chainName: "Binance Mainnet",
-                rpcUrls: ["https://bsc-dataseed.binance.org/"],
-                blockExplorerUrls: ["https://bscscan.com/"],
-            },
+                "0x61": {
+                    chainName: "Binance Test Network",
+                    rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+                    blockExplorerUrls: ["https://testnet.bscscan.com/"],
+                },
+                "0x38": {
+                    chainName: "Binance Mainnet",
+                    rpcUrls: ["https://bsc-dataseed.binance.org/"],
+                    blockExplorerUrls: ["https://bscscan.com/"],
+                },
             };
 
             try {
-            await window.ethereum.request({
-                method: "wallet_switchEthereumChain",
-                params: [{ chainId }],
-            });
-            return resolve(true);
-            } catch (error) {
-            if (error.code === 4902 && networks[chainId]) {
-                try {
                 await window.ethereum.request({
-                    method: "wallet_addEthereumChain",
-                    params: [
-                    {
-                        chainId,
-                        ...networks[chainId],
-                        iconUrls: ["https://www.logo.wine/a/logo/Binance/Binance-Icon-Logo.wine.svg"],
-                        nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
-                    },
-                    ],
+                    method: "wallet_switchEthereumChain",
+                    params: [{ chainId }],
                 });
                 return resolve(true);
-                } catch (addError) {
-                console.error(addError);
+            } catch (error) {
+                if (error.code === 4902 && networks[chainId]) {
+                    try {
+                        await window.ethereum.request({
+                            method: "wallet_addEthereumChain",
+                            params: [
+                            {
+                                chainId,
+                                ...networks[chainId],
+                                iconUrls: ["https://www.logo.wine/a/logo/Binance/Binance-Icon-Logo.wine.svg"],
+                                nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
+                            },
+                            ],
+                        });
+                        return resolve(true);
+                    } catch (addError) {
+                        console.error(addError);
+                    }
                 }
-            }
             }
             resolve(false);
         });
@@ -197,10 +197,13 @@ const useWeb3 = () => {
         window.location.reload();
     }
 
-    const setWalletListeners = () => {
+    const setWalletListeners = async () => {
         if (typeof window.ethereum === "undefined" || !userAddress) {
             return;
         }
+        // We force the network to be the correct one
+        await approveNetwork();
+
         // Add the accountsChanged listener
         window.ethereum.on("accountsChanged", async (accounts) => {
             if (!accounts || accounts.length === 0) {
@@ -230,9 +233,7 @@ const useWeb3 = () => {
             console.error("MetaMask error:", error);
         });
 
-        window.ethereum.on("chainChanged", async (chainId) => {
-            await approveNetwork();
-            alert("Chain changed in MetaMask");
+        window.ethereum.on("chainChanged", async () => {
             window.location.reload();
         });
     };

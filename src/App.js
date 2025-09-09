@@ -13,7 +13,7 @@ import useWeb3 from "./hooks/useWeb3";
 
 function App() {
   const { setWalletListeners } = useWeb3();
-  useEffect(setWalletListeners, []);
+  useEffect(() => setWalletListeners(), []);
   return (
     <>
       <BrowserRouter>
